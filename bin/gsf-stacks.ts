@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+import 'source-map-support/register';
+import * as cdk from '@aws-cdk/core';
+import { InstanceStack } from '../lib/InstanceStack';
+import { DatabaseStack } from '../lib/DatabaseStack';
+
+const app = new cdk.App();
+new InstanceStack(app, 'instance-stack', {
+  env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
+});
+
+new DatabaseStack(app, 'database-stack', {
+  env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
+});

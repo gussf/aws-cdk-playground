@@ -5,12 +5,12 @@ import { Subnet, SubnetType } from "@aws-cdk/aws-ec2";
 export class Ec2Builder extends core.Construct {
     constructor(scope: core.Construct, id: string) {
         super(scope, id);
-
-        const vpc = new ec2.Vpc(this, 'VPC');
+        
+        const vpc = ec2.Vpc.fromLookup(this, 'vpc-533bfe35', {isDefault: true});
 
         const mySecurityGroup = new ec2.SecurityGroup(this, 'SecurityGroup', {
             vpc,
-            securityGroupName: "gsf-stack-sg",
+            securityGroupName: "gsf-instance-sg",
             description: 'Allow ssh access to ec2 instances from anywhere',
             allowAllOutbound: true
         });
@@ -24,7 +24,7 @@ export class Ec2Builder extends core.Construct {
         };
 
         // Instance details
-        const ec2Instance = new ec2.Instance(this, 'GSF Instance', {
+        const ec2Instance = new ec2.Instance(this, 'amazon-linux-2', {
             vpc,
             instanceType: ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
             machineImage: awsAMI,

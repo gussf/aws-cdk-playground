@@ -1,12 +1,12 @@
 import * as cdk from '@aws-cdk/core';
-import * as ec2builder from './Ec2Builder';
+import * as dynamoBuilder from './DynamoBuilder';
 
-export class GsfCdkStackStack extends cdk.Stack {
+export class DatabaseStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     // The code that defines your stack goes here
-    new ec2builder.Ec2Builder(this, 'EC2 Stack');
+    new dynamoBuilder.DynamoBuilder(this, 'dynamodb');
     
   }
 }
