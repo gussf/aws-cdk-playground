@@ -2,7 +2,7 @@
   "name": "gsf-cdk-stack",
   "version": "0.1.0",
   "bin": {
-    "gsf-cdk-stack": "bin/gsf-cdk-stack.js"
+    "gsf-cdk-stack": "bin/gsf-stacks.js"
   },
   "scripts": {
     "build": "tsc",
